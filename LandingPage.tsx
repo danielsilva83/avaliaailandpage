@@ -224,8 +224,7 @@ const LandingPage: React.FC = () => {
         </div>
       </footer>
     </div>
-    
+
   );
 };
-
 export default LandingPage;
