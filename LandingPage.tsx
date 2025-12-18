@@ -1,33 +1,57 @@
+
 import React from 'react';
 import { 
   Car, TrendingUp, ShieldCheck, BrainCircuit, 
   ArrowRight, Check, Search, MessageSquare, 
-  Gauge, Zap, Instagram, Twitter,
-  Star, Clock, Shield, Sparkles
+  Gauge, Zap, ChevronRight, HelpCircle,
+  Star, Clock, Shield, Sparkles, ExternalLink,
+  Instagram, Twitter
 } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
   const APP_URL = "https://www.avaliaaiautomoveis.com";
 
+  const popularModels = [
+    "Toyota Corolla", "Honda Civic", "Chevrolet Onix", 
+    "VW Gol", "Fiat Strada", "Hyundai HB20", 
+    "Jeep Compass", "Toyota Hilux"
+  ];
+
+  const faqs = [
+    {
+      q: "Como o AvalIA AI calcula o preço real do carro?",
+      a: "Nossa IA cruza os dados oficiais da Tabela FIPE com anúncios ativos nos maiores portais do Brasil, descontando margens de negociação e considerando quilometragem e estado de conservação."
+    },
+    {
+      q: "O AvalIA AI substitui a Tabela FIPE?",
+      a: "Não, ele a complementa. A FIPE é uma média teórica; nós entregamos o preço de transação real, o que está acontecendo no mercado agora."
+    },
+    {
+      q: "Posso avaliar motos e caminhões?",
+      a: "Sim! Nossa IA está treinada para avaliar carros, motos e veículos comerciais com a mesma precisão."
+    }
+  ];
+
   return (
-    <div className="min-h-screen text-slate-200 selection:bg-blue-500/30">
+    <div className="min-h-screen bg-[#0a0f18] text-slate-200 selection:bg-blue-500/30 font-sans">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0a0f18]/80 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="bg-blue-600 p-1.5 rounded-lg shadow-lg shadow-blue-900/20">
               <Car className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-display font-bold text-white tracking-tight">AvalIA AI</span>
+            <span className="text-xl font-bold text-white tracking-tight">AvalIA AI</span>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
             <a href="#funcionalidades" className="hover:text-white transition-colors">Funcionalidades</a>
             <a href="#como-funciona" className="hover:text-white transition-colors">Como Funciona</a>
+            <a href="#modelos" className="hover:text-white transition-colors">Modelos</a>
             <a href="#precos" className="hover:text-white transition-colors">Preços</a>
           </div>
           <a 
             href={APP_URL}
-            className="bg-white text-slate-950 px-5 py-2 rounded-full text-sm font-bold hover:bg-blue-50 transition-all active:scale-95"
+            className="bg-white text-slate-950 px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-50 transition-all active:scale-95 shadow-lg shadow-white/5"
           >
             Acessar App
           </a>
@@ -36,281 +60,167 @@ const LandingPage: React.FC = () => {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        {/* Decorative elements */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20">
           <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-600 rounded-full blur-[120px]"></div>
           <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-purple-600 rounded-full blur-[120px]"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold mb-8 uppercase tracking-widest">
-            <Zap className="w-3 h-3 fill-current" /> IA de busca avançada ativada
+        <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold mb-8 uppercase tracking-widest animate-fade-in">
+            <Sparkles className="w-3 h-3 fill-current" /> 2 Avaliações Gratuitas para novos usuários
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-display font-black text-white leading-[1.1] mb-8">
-            Avalie Carros como um <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Especialista</span> em Segundos.
+          <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.05] mb-8 tracking-tighter">
+            Saiba o <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-emerald-400">Preço Real</span> de Mercado do seu Carro.
           </h1>
           
-          <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Experimente a tecnologia que está transformando o mercado. O AvalIA AI cruza dados da FIPE com anúncios reais para maximizar seu lucro.
+          <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed">
+            Não perca dinheiro na venda ou pague caro na compra. O <strong>AvalIA AI</strong> é a única inteligência que cruza a <strong>Tabela FIPE</strong> com anúncios reais em tempo real.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a 
               href={APP_URL}
-              className="w-full sm:w-auto px-8 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all animate-glow shadow-xl shadow-blue-900/20 active:scale-95"
+              className="w-full sm:w-auto px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-xl shadow-blue-900/40 active:scale-95 group"
             >
-              Experimentar Agora Gratis
-              <ArrowRight className="w-5 h-5" />
+              Consultar Valor do Carro Agora
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-            <div className="text-sm text-slate-500 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-emerald-500" /> 2 consultas de experiência inclusas
+            <div className="flex items-center gap-2 text-slate-500 text-sm">
+              <Shield className="w-4 h-4" /> Sem necessidade de cadastro inicial
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Badges */}
-      <section className="py-10 border-y border-white/5 bg-white/5">
-        <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-xs font-bold text-slate-600 uppercase tracking-widest mb-6">Integração com as Maiores Bases de Dados</p>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-20 opacity-40 grayscale contrast-125">
-             <span className="text-2xl font-bold italic tracking-tighter text-white">FIPE</span>
-             <span className="text-2xl font-bold text-white">WEBMOTORS</span>
-             <span className="text-2xl font-bold text-white">OLX</span>
-             <span className="text-2xl font-bold text-white">ICARROS</span>
           </div>
         </div>
       </section>
 
       {/* Features Grid */}
       <section id="funcionalidades" className="py-24 max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-4">Tecnologia que Gera Lucro</h2>
-          <p className="text-slate-400">Potencialize seus negócios com inteligência artificial inovadora.</p>
+        <div className="text-center mb-20">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">A ferramenta definitiva para avaliação de carros</h2>
+          <p className="text-slate-400 text-lg">Por que o AvalIA AI é mais preciso que a Tabela FIPE sozinha?</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="glass p-8 rounded-3xl hover:bg-white/5 transition-all group">
-            <div className="bg-blue-600/20 w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Search className="w-6 h-6 text-blue-400" />
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            { icon: Search, color: "blue", title: "Busca em Tempo Real", desc: "Analisamos anúncios ativos na Webmotors, OLX e iCarros para ver o preço praticado hoje." },
+            { icon: TrendingUp, color: "emerald", title: "Gap FIPE x Mercado", desc: "Entenda por que alguns carros vendem acima ou abaixo da tabela oficial." },
+            { icon: MessageSquare, color: "purple", title: "Scripts de Negociação", desc: "Receba argumentos baseados em dados para convencer o comprador ou vendedor." },
+            { icon: Gauge, color: "orange", title: "Índice de Liquidez", desc: "Saiba se o veículo é 'moeda de troca' ou se vai ficar parado no seu estoque." }
+          ].map((item, i) => (
+            <div key={i} className="bg-white/5 border border-white/10 p-8 rounded-[2rem] hover:bg-white/[0.08] transition-all group">
+              <div className={`bg-${item.color}-600/20 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                <item.icon className={`w-7 h-7 text-${item.color}-400`} />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">Pesquisa em Tempo Real</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">Não usamos apenas tabelas frias. Buscamos anúncios reais no Webmotors e OLX hoje.</p>
-          </div>
-
-          <div className="glass p-8 rounded-3xl hover:bg-white/5 transition-all group">
-            <div className="bg-emerald-600/20 w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <TrendingUp className="w-6 h-6 text-emerald-400" />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-3">Inteligência FIPE</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">Saiba exatamente o quanto o mercado está pagando acima ou abaixo da FIPE para cada modelo.</p>
-          </div>
-
-          <div className="glass p-8 rounded-3xl hover:bg-white/5 transition-all group">
-            <div className="bg-purple-600/20 w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <MessageSquare className="w-6 h-6 text-purple-400" />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-3">Scripts de Venda</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">Argumentos prontos baseados nos pontos fortes e fracos do veículo para fechar o negócio.</p>
-          </div>
-
-          <div className="glass p-8 rounded-3xl hover:bg-white/5 transition-all group">
-            <div className="bg-orange-600/20 w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Gauge className="w-6 h-6 text-orange-400" />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-3">Check-up de Liquidez</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">Descubra quais carros são "cheque em branco" e quais vão ficar meses parados no pátio.</p>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* How it Works Section */}
-      <section id="como-funciona" className="py-24 bg-white/5 border-y border-white/5 overflow-hidden">
+      {/* Topic Clusters Section (SEO GOLD) */}
+      <section id="modelos" className="py-20 bg-blue-600/5">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2">
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-8">Da entrada à oferta final em 60 segundos.</h2>
-              <div className="space-y-10">
-                <div className="flex gap-6">
-                  <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shrink-0">1</div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">Preencha o Formulário</h4>
-                    <p className="text-slate-400">Insira modelo, km e estado. O sistema entende até os opcionais mais complexos.</p>
-                  </div>
-                </div>
-                <div className="flex gap-6">
-                  <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shrink-0">2</div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">O AvalIA processa o Mercado</h4>
-                    <p className="text-slate-400">Nossa IA vasculha as maiores plataformas de venda do Brasil em busca de comparativos.</p>
-                  </div>
-                </div>
-                <div className="flex gap-6">
-                  <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold shrink-0">3</div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">Relatório Estratégico</h4>
-                    <p className="text-slate-400">Você recebe o preço ideal, pontos críticos e scripts para copiar e colar no WhatsApp.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-1/2 relative">
-               <div className="relative glass p-4 rounded-[2rem] shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-700">
-                  <div className="bg-slate-900 rounded-[1.5rem] p-6 border border-white/10">
-                    <div className="flex items-center gap-3 mb-6">
-                       <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center"><Car className="text-white" /></div>
-                       <div>
-                          <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">Resultado da Análise</p>
-                          <p className="text-white font-bold">Civic Touring 1.5 Turbo</p>
-                       </div>
-                    </div>
-                    <div className="space-y-4">
-                       <div className="h-4 bg-white/5 rounded w-3/4"></div>
-                       <div className="h-4 bg-white/5 rounded w-full"></div>
-                       <div className="grid grid-cols-2 gap-4 pt-4">
-                          <div className="bg-blue-600/20 p-4 rounded-xl border border-blue-500/20">
-                             <p className="text-[10px] text-blue-400 font-bold uppercase">Mínimo Sugerido</p>
-                             <p className="text-lg font-bold text-white">R$ 142.500</p>
-                          </div>
-                          <div className="bg-emerald-600/20 p-4 rounded-xl border border-emerald-500/20">
-                             <p className="text-[10px] text-emerald-400 font-bold uppercase">Liquidez</p>
-                             <p className="text-lg font-bold text-white">ALTÍSSIMA</p>
-                          </div>
-                       </div>
-                    </div>
-                  </div>
-               </div>
-            </div>
+          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+            <Zap className="text-yellow-400 w-5 h-5" /> 
+            Avaliações de Carros mais buscadas
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {popularModels.map((model, idx) => (
+              <a 
+                key={idx} 
+                href={APP_URL} 
+                className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm text-slate-300 hover:border-blue-500 hover:text-white transition-all"
+              >
+                Preço {model}
+              </a>
+            ))}
           </div>
+          <p className="mt-6 text-xs text-slate-500 italic">
+            *Dados baseados em consultas reais processadas por nossa Inteligência Artificial nos últimos 30 dias.
+          </p>
+        </div>
+      </section>
+
+      {/* FAQ Section (SEO Snippets) */}
+      <section className="py-24 max-w-4xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-white mb-12 text-center">Dúvidas Frequentes sobre Preço de Carros</h2>
+        <div className="space-y-4">
+          {faqs.map((faq, idx) => (
+            <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl p-6">
+              <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                <HelpCircle className="w-5 h-5 text-blue-500" />
+                {faq.q}
+              </h3>
+              <p className="text-slate-400 text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section id="precos" className="py-24 px-6 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-4">Investimento com Retorno Imediato</h2>
-            <p className="text-slate-400">Potencialize seus lucros com a ferramenta definitiva.</p>
-          </div>
-
-          <div className="flex flex-col md:flex-row justify-center items-center gap-12 max-w-5xl mx-auto">
+      <section id="precos" className="py-24 px-6 relative">
+        <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-16">O investimento que se paga na primeira negociação</h2>
             
-            {/* Experience Section */}
-            <div className="max-w-xs text-center md:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold mb-4 uppercase tracking-widest">
-                Experimente o Futuro
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">Veja a Inovação em Ação</h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Incentivamos você a experimentar nossa IA. Oferecemos <strong>2 consultas gratuitas</strong> para que você sinta a precisão dos dados antes de se tornar PRO.
-              </p>
-              <a href={APP_URL} className="text-blue-400 font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                Testar Agora <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-
-            {/* PRO Plan - Promotional */}
-            <div className="flex-1 w-full max-w-md bg-gradient-to-br from-blue-600 to-blue-800 p-10 rounded-[2.5rem] shadow-2xl shadow-blue-900/40 relative transform hover:scale-[1.02] transition-transform z-20">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-blue-900 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl">
-                OFERTA DE LANÇAMENTO
-              </div>
-              
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xl font-bold text-white">Plano PRO Vitalício</h3>
-                <Star className="w-6 h-6 text-yellow-300 fill-current" />
-              </div>
-              <p className="text-blue-100 text-sm mb-6 font-medium">Pague uma vez, use para sempre.</p>
-              
-              <div className="mb-8">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-black text-white">R$ 47,90</span>
-                  <span className="text-blue-200/60 line-through text-sm font-bold">R$ 97,00</span>
+            <div className="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-4xl mx-auto">
+              {/* Plano Grátis */}
+              <div className="flex-1 bg-white/5 p-10 rounded-[2.5rem] border border-white/10 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2 text-left">Test Drive</h3>
+                  <p className="text-slate-400 text-sm mb-6 text-left">Ideal para quem está apenas pesquisando.</p>
+                  <div className="text-4xl font-black text-white mb-8 text-left">Grátis</div>
+                  <ul className="text-left space-y-4 text-sm text-slate-300 mb-8">
+                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-emerald-500" /> 2 Consultas Completas</li>
+                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-emerald-500" /> Comparativo FIPE x Mercado</li>
+                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-emerald-500" /> Acesso à IA Gemini 3</li>
+                  </ul>
                 </div>
-                <p className="text-[10px] text-blue-200 font-bold mt-2 flex items-center gap-1 uppercase tracking-tighter">
-                  <Clock className="w-3 h-3" /> Valor único - Sem mensalidades
-                </p>
+                <a href={APP_URL} className="w-full py-4 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold transition-all">Começar Agora</a>
               </div>
-              
-              <ul className="space-y-4 mb-10">
-                <li className="flex items-center gap-3 text-sm text-white">
-                  <Check className="w-4 h-4 text-emerald-300" /> Consultas Ilimitadas
-                </li>
-                <li className="flex items-center gap-3 text-sm text-white">
-                  <Check className="w-4 h-4 text-emerald-300" /> Scripts de Negociação Pro
-                </li>
-                <li className="flex items-center gap-3 text-sm text-white">
-                  <Check className="w-4 h-4 text-emerald-300" /> Suporte Prioritário
-                </li>
-                <li className="flex items-center gap-3 text-sm text-white">
-                  <Shield className="w-4 h-4 text-emerald-300" /> Acesso Vitalício (Garantido agora)
-                </li>
-              </ul>
 
-              <a 
-                href={APP_URL}
-                className="w-full py-5 bg-white text-blue-900 rounded-2xl font-black text-center shadow-lg hover:shadow-2xl transition-all active:scale-95 block"
-              >
-                EXPERIMENTE E ASSINE 
-              </a>
-
-              <div className="mt-6 p-4 bg-white/10 rounded-xl border border-white/10">
-                <p className="text-[12px] leading-snug text-blue-50 text-center font-medium">
-                  <strong>ASSINE COM PIX de forma segura direto no APP (sem necessidade de cartão de credito)...
-                    </strong>
-                    <strong>Atenção:</strong> Esta é uma promoção de lançamento. Após este período, o plano passará a ser <strong>ANUAL</strong> pelo mesmo valor. Garanta sua vaga permanente agora!
-                </p>
+              {/* Plano PRO */}
+              <div className="flex-1 bg-blue-600 p-10 rounded-[2.5rem] shadow-2xl shadow-blue-900/40 relative transform md:scale-105 z-10 flex flex-col justify-between border-2 border-blue-400">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-blue-900 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Oferta de Lançamento</div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2 text-left">PRO Vitalício</h3>
+                  <p className="text-blue-100 text-sm mb-6 text-left">Para quem faz negócios de verdade.</p>
+                  <div className="flex items-baseline gap-2 mb-8">
+                    <span className="text-5xl font-black text-white">R$ 47,90</span>
+                    <span className="text-blue-200 line-through text-sm">R$ 97,00</span>
+                  </div>
+                  <ul className="text-left space-y-4 text-sm text-blue-50 mb-8">
+                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-yellow-300" /> Consultas Ilimitadas</li>
+                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-yellow-300" /> Scripts de Negociação Elite</li>
+                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-yellow-300" /> Análise de Liquidez Detalhada</li>
+                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-yellow-300" /> Sem Mensalidade (Pagamento Único)</li>
+                  </ul>
+                </div>
+                <a href={APP_URL} className="w-full py-4 bg-white text-blue-900 rounded-xl font-bold shadow-lg hover:bg-blue-50 transition-all flex items-center justify-center gap-2">
+                  <Zap className="w-4 h-4 fill-current" /> Ativar Acesso Vitalício
+                </a>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Final */}
-      <section className="py-32 px-6">
-        <div className="max-w-4xl mx-auto glass p-12 md:p-20 rounded-[3rem] text-center relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-600/10 to-transparent pointer-events-none"></div>
-          
-          <h2 className="text-4xl md:text-6xl font-display font-black text-white mb-8 relative z-10 leading-tight">
-            Pronto para nunca mais perder um negócio?
-          </h2>
-          <p className="text-slate-400 text-lg mb-12 relative z-10">
-            Junte-se a milhares de negociadores que já estão usando a AvalIA AI para dominar o mercado local.
-          </p>
-          
-          <a 
-            href={APP_URL}
-            className="inline-flex items-center gap-3 px-12 py-6 bg-white text-slate-950 rounded-2xl font-black text-xl hover:bg-blue-50 transition-all shadow-2xl active:scale-95 relative z-10"
-          >
-            Acessar Agora
-            <ArrowRight className="w-6 h-6" />
-          </a>
-          
-          <div className="mt-8 flex justify-center gap-6 text-xs font-bold text-slate-500 uppercase tracking-widest relative z-10">
-            <span className="flex items-center gap-1"><Check className="text-emerald-500 w-4 h-4" /> 2 Testes Grátis</span>
-            <span className="flex items-center gap-1"><Check className="text-emerald-500 w-4 h-4" /> Dados em Tempo Real</span>
-          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-white/5 bg-black/30">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex items-center gap-2">
-            <Car className="w-5 h-5 text-blue-600" />
-            <span className="font-display font-bold text-white">AvalIA AI Automóveis</span>
+      <footer className="py-20 border-t border-white/5 bg-black/40">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <Car className="w-6 h-6 text-blue-500" />
+            <span className="text-2xl font-bold text-white tracking-tight">AvalIA AI</span>
           </div>
-          
-          <p className="text-slate-500 text-sm text-center">
-            © 2024 AvalIA AI. Desenvolvido para impulsionar seus resultados.
+          <p className="text-slate-500 text-sm max-w-lg mx-auto mb-10 leading-relaxed">
+            A inteligência artificial que está transformando a forma como o brasileiro entende o <strong>valor do carro</strong>. Use dados, não apenas tabelas.
           </p>
-
-          <div className="flex gap-4">
-             <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors"><Instagram className="w-5 h-5" /></a>
-             <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors"><Twitter className="w-5 h-5" /></a>
+          <div className="flex justify-center gap-6 mb-10">
+            <a href="#" className="text-slate-400 hover:text-white transition-colors"><Instagram className="w-6 h-6" /></a>
+            <a href="#" className="text-slate-400 hover:text-white transition-colors"><Twitter className="w-6 h-6" /></a>
           </div>
+          <p className="text-slate-600 text-[10px] uppercase tracking-widest font-bold">
+            © 2024 AvalIA AI Automóveis - Tecnologia de Precisão Automotiva
+          </p>
         </div>
       </footer>
     </div>
