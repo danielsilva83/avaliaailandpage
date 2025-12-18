@@ -224,6 +224,7 @@ const LandingPage: React.FC = () => {
         </div>
       </footer>
     </div>
+    
   );
 };
 
