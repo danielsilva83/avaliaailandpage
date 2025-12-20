@@ -5,7 +5,7 @@ import {
   ArrowRight, Check, Search, MessageSquare, 
   Gauge, Zap, ChevronRight, HelpCircle,
   Star, Clock, Shield, Sparkles, ExternalLink,
-  Instagram, Twitter
+  Instagram, Twitter, MapPin, Target, Globe
 } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
@@ -19,16 +19,16 @@ const LandingPage: React.FC = () => {
 
   const faqs = [
     {
+      q: "Por que a avaliação regional é importante?",
+      a: "Um carro em São Paulo tem uma base de preços diferente de um no Acre. Frete, impostos estaduais (IPVA) e a demanda regional influenciam diretamente no valor de revenda. O AvalIA AI é o único que considera isso."
+    },
+    {
       q: "Como o AvalIA AI calcula o preço real do carro?",
-      a: "Nossa IA cruza os dados oficiais da Tabela FIPE com anúncios ativos nos maiores portais do Brasil, descontando margens de negociação e considerando quilometragem e estado de conservação."
+      a: "Nossa IA cruza os dados oficiais da Tabela FIPE com anúncios ativos nos maiores portais do Brasil da sua região, descontando margens de negociação e considerando quilometragem."
     },
     {
-      q: "O AvalIA AI substitui a Tabela FIPE?",
-      a: "Não, ele a complementa. A FIPE é uma média teórica; nós entregamos o preço de transação real, o que está acontecendo no mercado agora."
-    },
-    {
-      q: "Posso avaliar motos e caminhões?",
-      a: "Sim! Nossa IA está treinada para avaliar carros, motos e veículos comerciais com a mesma precisão."
+      q: "Posso avaliar qualquer estado do Brasil?",
+      a: "Sim! Ao iniciar a pesquisa, você seleciona a UF (Estado) desejada e nossa IA ajusta o motor de busca para o mercado local daquela região específica."
     }
   ];
 
@@ -45,8 +45,7 @@ const LandingPage: React.FC = () => {
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
             <a href="#funcionalidades" className="hover:text-white transition-colors">Funcionalidades</a>
-            <a href="#como-funciona" className="hover:text-white transition-colors">Como Funciona</a>
-            <a href="#modelos" className="hover:text-white transition-colors">Modelos</a>
+            <a href="#regional" className="hover:text-white transition-colors">Precisão Regional</a>
             <a href="#precos" className="hover:text-white transition-colors">Preços</a>
           </div>
           <a 
@@ -67,15 +66,15 @@ const LandingPage: React.FC = () => {
 
         <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold mb-8 uppercase tracking-widest animate-fade-in">
-            <Sparkles className="w-3 h-3 fill-current" /> 2 Avaliações Gratuitas para novos usuários
+            <MapPin className="w-3 h-3 fill-current" /> Agora com Inteligência por Estado (UF)
           </div>
           
           <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.05] mb-8 tracking-tighter">
-            Saiba o <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-emerald-400">Preço Real</span> de Mercado do seu Carro.
+            O preço real do seu carro, na <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-emerald-400">sua região</span>.
           </h1>
           
           <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Não perca dinheiro na venda ou pague caro na compra. O <strong>AvalIA AI</strong> é a única inteligência que cruza a <strong>Tabela FIPE</strong> com anúncios reais em tempo real.
+            A Tabela FIPE é uma média nacional teórica. O <strong>AvalIA AI</strong> é a realidade do mercado local. Avalie seu veículo considerando a economia e os anúncios do seu estado.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -83,11 +82,61 @@ const LandingPage: React.FC = () => {
               href={APP_URL}
               className="w-full sm:w-auto px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-xl shadow-blue-900/40 active:scale-95 group"
             >
-              Consultar Valor do Carro Agora
+              Começar Avaliação Regional
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-            <div className="flex items-center gap-2 text-slate-500 text-sm">
-              <Shield className="w-4 h-4" /> Sem necessidade de cadastro inicial
+          </div>
+        </div>
+      </section>
+
+      {/* Regional Precision Section */}
+      <section id="regional" className="py-24 bg-white/[0.02] border-y border-white/5 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="inline-flex p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-6">
+                <Target className="w-8 h-8 text-blue-400" />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">Por que a Tabela FIPE sozinha não basta?</h2>
+              <p className="text-slate-400 text-lg mb-8 leading-relaxed">
+                Você sabia que um <strong>SUV seminovo</strong> pode valer até 12% mais em Santa Catarina do que no Rio de Janeiro? Fatores como a malha rodoviária, impostos locais e preferência regional ditam o preço real de transação.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "Filtro por anúncios reais da sua UF",
+                  "Cálculo de IPVA e taxas estaduais",
+                  "Análise de liquidez regional (Giro de Estoque)",
+                  "Scripts de venda adaptados ao público local"
+                ].map((text, i) => (
+                  <li key={i} className="flex items-center gap-3 text-slate-300">
+                    <div className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-500/40">
+                      <Check className="w-3 h-3 text-blue-400" />
+                    </div>
+                    {text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="relative">
+              <div className="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full"></div>
+              <div className="relative bg-[#0d1525] border border-white/10 p-8 rounded-[2.5rem] shadow-2xl">
+                 <div className="flex items-center justify-between mb-8">
+                    <div className="flex items-center gap-3">
+                       <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">SP</div>
+                       <div className="text-sm font-bold text-white">Mercado São Paulo</div>
+                    </div>
+                    <div className="text-blue-400 font-mono font-bold">R$ 84.500</div>
+                 </div>
+                 <div className="h-px bg-white/5 mb-8"></div>
+                 <div className="flex items-center justify-between opacity-50">
+                    <div className="flex items-center gap-3">
+                       <div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold">AM</div>
+                       <div className="text-sm font-bold text-white">Mercado Amazonas</div>
+                    </div>
+                    <div className="text-slate-400 font-mono font-bold">R$ 91.200</div>
+                 </div>
+                 <p className="mt-8 text-center text-xs text-slate-500 uppercase tracking-widest font-bold">Diferença Real de Mercado Detectada pela IA</p>
+              </div>
             </div>
           </div>
         </div>
@@ -96,16 +145,15 @@ const LandingPage: React.FC = () => {
       {/* Features Grid */}
       <section id="funcionalidades" className="py-24 max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">A ferramenta definitiva para avaliação de carros</h2>
-          <p className="text-slate-400 text-lg">Por que o AvalIA AI é mais preciso que a Tabela FIPE sozinha?</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">A tecnologia por trás do AvalIA AI</h2>
+          <p className="text-slate-400 text-lg">Unimos dados nacionais com visão local.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
-            { icon: Search, color: "blue", title: "Busca em Tempo Real", desc: "Analisamos anúncios ativos na Webmotors, OLX e iCarros para ver o preço praticado hoje." },
-            { icon: TrendingUp, color: "emerald", title: "Gap FIPE x Mercado", desc: "Entenda por que alguns carros vendem acima ou abaixo da tabela oficial." },
-            { icon: MessageSquare, color: "purple", title: "Scripts de Negociação", desc: "Receba argumentos baseados em dados para convencer o comprador ou vendedor." },
-            { icon: Gauge, color: "orange", title: "Índice de Liquidez", desc: "Saiba se o veículo é 'moeda de troca' ou se vai ficar parado no seu estoque." }
+            { icon: Search, color: "blue", title: "Busca Regionalizada", desc: "Varremos OLX, Webmotors e portais locais focando na sua UF para encontrar comparativos reais." },
+            { icon: TrendingUp, color: "emerald", title: "Análise de Gap", desc: "Descubra se o seu carro é valorizado na sua região ou se a oferta está saturada." },
+            { icon: BrainCircuit, color: "purple", title: "IA Generativa Gemini", desc: "Nossa IA interpreta os dados de mercado e cria uma estratégia de venda única para você." }
           ].map((item, i) => (
             <div key={i} className="bg-white/5 border border-white/10 p-8 rounded-[2rem] hover:bg-white/[0.08] transition-all group">
               <div className={`bg-${item.color}-600/20 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
@@ -118,33 +166,9 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Topic Clusters Section (SEO GOLD) */}
-      <section id="modelos" className="py-20 bg-blue-600/5">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-            <Zap className="text-yellow-400 w-5 h-5" /> 
-            Avaliações de Carros mais buscadas
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            {popularModels.map((model, idx) => (
-              <a 
-                key={idx} 
-                href={APP_URL} 
-                className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm text-slate-300 hover:border-blue-500 hover:text-white transition-all"
-              >
-                Preço {model}
-              </a>
-            ))}
-          </div>
-          <p className="mt-6 text-xs text-slate-500 italic">
-            *Dados baseados em consultas reais processadas por nossa Inteligência Artificial nos últimos 30 dias.
-          </p>
-        </div>
-      </section>
-
-      {/* FAQ Section (SEO Snippets) */}
+      {/* FAQ Section */}
       <section className="py-24 max-w-4xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-white mb-12 text-center">Dúvidas Frequentes sobre Preço de Carros</h2>
+        <h2 className="text-3xl font-bold text-white mb-12 text-center">Tire suas dúvidas</h2>
         <div className="space-y-4">
           {faqs.map((faq, idx) => (
             <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl p-6">
@@ -158,52 +182,6 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="precos" className="py-24 px-6 relative">
-        <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-16">O investimento que se paga na primeira negociação</h2>
-            
-            <div className="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-4xl mx-auto">
-              {/* Plano Grátis */}
-              <div className="flex-1 bg-white/5 p-10 rounded-[2.5rem] border border-white/10 flex flex-col justify-between">
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2 text-left">Test Drive</h3>
-                  <p className="text-slate-400 text-sm mb-6 text-left">Ideal para quem está apenas pesquisando.</p>
-                  <div className="text-4xl font-black text-white mb-8 text-left">Grátis</div>
-                  <ul className="text-left space-y-4 text-sm text-slate-300 mb-8">
-                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-emerald-500" /> 2 Consultas Completas</li>
-                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-emerald-500" /> Comparativo FIPE x Mercado</li>
-                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-emerald-500" /> Acesso à IA Gemini 3</li>
-                  </ul>
-                </div>
-                <a href={APP_URL} className="w-full py-4 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold transition-all">Começar Agora</a>
-              </div>
-
-              {/* Plano PRO */}
-              <div className="flex-1 bg-blue-600 p-10 rounded-[2.5rem] shadow-2xl shadow-blue-900/40 relative transform md:scale-105 z-10 flex flex-col justify-between border-2 border-blue-400">
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-blue-900 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Oferta de Lançamento</div>
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2 text-left">PRO Vitalício</h3>
-                  <p className="text-blue-100 text-sm mb-6 text-left">Para quem faz negócios de verdade.</p>
-                  <div className="flex items-baseline gap-2 mb-8">
-                    <span className="text-5xl font-black text-white">R$ 47,90</span>
-                    <span className="text-blue-200 line-through text-sm">R$ 97,00</span>
-                  </div>
-                  <ul className="text-left space-y-4 text-sm text-blue-50 mb-8">
-                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-yellow-300" /> Consultas Ilimitadas</li>
-                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-yellow-300" /> Scripts de Negociação Elite</li>
-                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-yellow-300" /> Análise de Liquidez Detalhada</li>
-                    <li className="flex items-center gap-3"><Check className="w-5 h-5 text-yellow-300" /> Sem Mensalidade (Pagamento Único)</li>
-                  </ul>
-                </div>
-                <a href={APP_URL} className="w-full py-4 bg-white text-blue-900 rounded-xl font-bold shadow-lg hover:bg-blue-50 transition-all flex items-center justify-center gap-2">
-                  <Zap className="w-4 h-4 fill-current" /> Ativar Acesso Vitalício
-                </a>
-              </div>
-            </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="py-20 border-t border-white/5 bg-black/40">
         <div className="max-w-7xl mx-auto px-6 text-center">
@@ -212,19 +190,15 @@ const LandingPage: React.FC = () => {
             <span className="text-2xl font-bold text-white tracking-tight">AvalIA AI</span>
           </div>
           <p className="text-slate-500 text-sm max-w-lg mx-auto mb-10 leading-relaxed">
-            A inteligência artificial que está transformando a forma como o brasileiro entende o <strong>valor do carro</strong>. Use dados, não apenas tabelas.
+            A ferramenta que trouxe a <strong>inteligência geográfica</strong> para a palma da sua mão. Venda melhor, compre com consciência.
           </p>
-          <div className="flex justify-center gap-6 mb-10">
-            <a href="#" className="text-slate-400 hover:text-white transition-colors"><Instagram className="w-6 h-6" /></a>
-            <a href="#" className="text-slate-400 hover:text-white transition-colors"><Twitter className="w-6 h-6" /></a>
-          </div>
           <p className="text-slate-600 text-[10px] uppercase tracking-widest font-bold">
-            © 2024 AvalIA AI Automóveis - Tecnologia de Precisão Automotiva
+            © 2024 AvalIA AI Automóveis - Inteligência Geográfica Automotiva
           </p>
         </div>
       </footer>
     </div>
-
   );
 };
+
 export default LandingPage;
