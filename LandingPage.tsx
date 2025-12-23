@@ -9,8 +9,8 @@ import {
 } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
-  // Redireciona para a raiz onde o App principal está hospedado
-  const APP_URL = "/";
+  // URL OFICIAL DO APP PARA REDIRECIONAMENTO
+  const APP_URL = "https://www.avaliaaiautomoveis.com";
 
   const FOOTER_LINKS = [
     { brand: 'Volkswagen', model: 'gol', name: 'Preço Gol' },
@@ -26,14 +26,14 @@ const LandingPage: React.FC = () => {
   ];
 
   const FAQS = [
-    { q: "O AvalIA AI substitui a Tabela FIPE?", a: "Não, ele complementa. A FIPE é uma média nacional, enquanto nós entregamos o preço real de transação do SEU estado hoje." },
-    { q: "Como vocês sabem o preço de cada estado?", a: "Nossa IA faz um 'scrapping' em tempo real de anúncios ativos e cruzamos com dados históricos de venda em cada região do Brasil." },
-    { q: "Posso usar para motos e caminhões?", a: "Sim! Nossa inteligência está treinada para toda a base de dados automotiva nacional." }
+    { q: "O AvalIA AI substitui a Tabela FIPE?", a: "Não, ele a torna inteligente. A FIPE é uma média nacional estática. Nós entregamos o preço real de transação do seu estado HOJE, baseado em anúncios ativos." },
+    { q: "Como a IA sabe o preço regional?", a: "Nossa tecnologia utiliza o Google Search Grounding para escanear marketplaces locais em tempo real, detectando escassez ou excesso de oferta na sua UF." },
+    { q: "O relatório serve para negociação?", a: "Com certeza. O Dossiê PRO gera um documento visual que você pode mostrar ao comprador/vendedor para justificar seu preço com base em dados, não em palpites." }
   ];
 
   return (
     <div className="min-h-screen bg-[#0a0f18] text-slate-200 selection:bg-blue-500/30 font-sans scroll-smooth">
-      {/* Navegação Sticky */}
+      {/* Header / Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0a0f18]/80 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -44,8 +44,8 @@ const LandingPage: React.FC = () => {
           </div>
           <div className="hidden md:flex items-center gap-8 text-xs font-black uppercase tracking-widest text-slate-400">
             <a href="#como-funciona" className="hover:text-white transition-colors">Como Funciona</a>
-            <a href="#comparativo" className="hover:text-white transition-colors">Comparativo</a>
-            <a href="/modelos" className="hover:text-white transition-colors">Diretório</a>
+            <a href="#comparativo" className="hover:text-white transition-colors">Por que regional?</a>
+            <a href={`${APP_URL}/modelos`} className="hover:text-white transition-colors">Diretório</a>
           </div>
           <a href={APP_URL} className="bg-white text-slate-950 px-6 py-2.5 rounded-full text-sm font-black hover:bg-blue-50 transition-all active:scale-95 shadow-lg">Entrar no App</a>
         </div>
@@ -59,8 +59,8 @@ const LandingPage: React.FC = () => {
         </div>
         
         <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black mb-8 uppercase tracking-widest animate-fade-in">
-            <Globe2 className="w-3 h-3" /> Inteligência Regionalizada v2.5
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black mb-8 uppercase tracking-widest animate-pulse">
+            <Globe2 className="w-3 h-3" /> Inteligência Regionalizada v2.5 Online
           </div>
           
           <h1 className="text-5xl md:text-8xl font-black text-white leading-[1] mb-8 tracking-tighter">
@@ -76,16 +76,14 @@ const LandingPage: React.FC = () => {
               Avaliar Veículo Agora <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <div className="flex items-center gap-3 px-6 py-3 bg-white/5 rounded-2xl border border-white/10">
-              <div className="flex -space-x-2">
-                {[1,2,3].map(i => <div key={i} className="w-8 h-8 rounded-full bg-slate-800 border-2 border-[#0a0f18] flex items-center justify-center text-[10px] font-bold">U{i}</div>)}
-              </div>
-              <span className="text-xs font-bold text-slate-400 tracking-tight">Usado por +12.000 lojistas e particulares</span>
+              <Users className="w-5 h-5 text-slate-500" />
+              <span className="text-xs font-bold text-slate-400 tracking-tight">+12.000 avaliações regionais este mês</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Seção Comparativo Visual */}
+      {/* Seção Comparativo Visual - A "Matadora" */}
       <section id="comparativo" className="py-24 bg-white/[0.02] border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-6">
@@ -94,19 +92,17 @@ const LandingPage: React.FC = () => {
               <span className="text-blue-500">Nós mostramos o agora.</span>
             </h2>
             <p className="text-slate-400 text-lg">
-              Um utilitário 4x4 no Centro-Oeste vale mais que no litoral. O AvalIA AI detecta essas nuances geográficas que a Tabela FIPE ignora.
+              Um utilitário no MT vale mais que em SP. Um Sedan blindado no RJ tem preço único. A Tabela FIPE ignora isso, nós não.
             </p>
-            <div className="grid grid-cols-2 gap-4">
-               <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                  <BarChart3 className="w-6 h-6 text-blue-400 mb-2" />
-                  <h4 className="font-bold text-sm">Dados Vivos</h4>
-                  <p className="text-[10px] text-slate-500">Atualizado a cada 24h</p>
-               </div>
-               <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                  <Target className="w-6 h-6 text-emerald-400 mb-2" />
-                  <h4 className="font-bold text-sm">Precisão de 98%</h4>
-                  <p className="text-[10px] text-slate-500">Foco em fechamento</p>
-               </div>
+            <div className="space-y-4 mt-8">
+              <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
+                <CheckCircle2 className="w-6 h-6 text-emerald-500" />
+                <span className="text-sm font-bold">Ajuste de Preço por UF em tempo real</span>
+              </div>
+              <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
+                <CheckCircle2 className="w-6 h-6 text-emerald-500" />
+                <span className="text-sm font-bold">Dossiê de Venda pronto para PDF</span>
+              </div>
             </div>
           </div>
 
@@ -118,32 +114,32 @@ const LandingPage: React.FC = () => {
                     <Car className="w-6 h-6 text-blue-400" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white">Jeep Compass Limited</h4>
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Estado: São Paulo (SP)</p>
+                    <h4 className="text-sm font-bold text-white">Toyota Corolla XEi 2.0</h4>
+                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Região: Minas Gerais (MG)</p>
                   </div>
                </div>
                
                <div className="space-y-6">
                   <div className="flex justify-between items-end border-b border-white/5 pb-4">
                     <div className="space-y-1">
-                      <span className="text-slate-500 text-[10px] font-black uppercase">Média Nacional (FIPE)</span>
-                      <p className="text-slate-400 font-bold line-through">R$ 142.900</p>
+                      <span className="text-slate-500 text-[10px] font-black uppercase">Média Brasil (FIPE)</span>
+                      <p className="text-slate-400 font-bold line-through">R$ 112.500</p>
                     </div>
-                    <span className="text-slate-600 text-[10px] font-bold italic">Desatualizado</span>
+                    <span className="text-slate-600 text-[10px] font-bold italic">Genérico</span>
                   </div>
                   
                   <div className="flex justify-between items-end">
                     <div className="space-y-1">
-                      <span className="text-blue-400 text-[10px] font-black uppercase">Preço AvalIA AI (Real SP)</span>
-                      <p className="text-4xl font-black text-white tracking-tighter">R$ 151.200</p>
+                      <span className="text-blue-400 text-[10px] font-black uppercase">Valor Real AvalIA AI (MG)</span>
+                      <p className="text-4xl font-black text-white tracking-tighter">R$ 119.800</p>
                     </div>
-                    <div className="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-[10px] font-black">LUCRO: + R$ 8.300</div>
+                    <div className="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-[10px] font-black animate-bounce">VALORIZADO +6.5%</div>
                   </div>
                </div>
 
                <div className="mt-8 p-4 bg-blue-600/10 border border-blue-500/20 rounded-2xl flex items-center gap-4">
-                  <Sparkles className="w-5 h-5 text-blue-400 shrink-0" />
-                  <p className="text-xs text-blue-200">Nossa IA detectou que este modelo tem <strong>alta procura</strong> em SP nesta semana.</p>
+                  <Zap className="w-5 h-5 text-blue-400 shrink-0" />
+                  <p className="text-xs text-blue-200">Em <strong>MG</strong>, este modelo tem <strong>baixa oferta</strong> hoje, elevando o preço final.</p>
                </div>
             </div>
           </div>
@@ -154,12 +150,12 @@ const LandingPage: React.FC = () => {
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-black text-white uppercase tracking-tighter">Dúvidas Frequentes</h2>
+            <h2 className="text-3xl font-black text-white uppercase tracking-tighter">Perguntas Frequentes</h2>
           </div>
-          <div className="space-y-4">
+          <div className="grid gap-4">
             {FAQS.map((f, i) => (
-              <div key={i} className="p-6 bg-white/5 border border-white/10 rounded-2xl">
-                <h4 className="font-bold text-white mb-2 flex items-center gap-3">
+              <div key={i} className="p-6 bg-white/5 border border-white/10 rounded-2xl hover:border-white/20 transition-all">
+                <h4 className="font-bold text-white mb-2 flex items-center gap-3 uppercase text-sm tracking-tight">
                   <ShieldQuestion className="w-5 h-5 text-blue-500" /> {f.q}
                 </h4>
                 <p className="text-sm text-slate-400 leading-relaxed">{f.a}</p>
@@ -169,16 +165,16 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* SEO Directory Footer */}
+      {/* SEO Directory Footer - Links Absolutos para publicação */}
       <section className="py-24 border-t border-white/5 bg-[#080c14]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-6">
             <div className="text-center md:text-left">
-              <h2 className="text-2xl font-black text-white tracking-tighter uppercase">Guia de Preços por Modelo</h2>
-              <p className="text-slate-500 text-sm mt-1">Dados reais de mercado para os modelos mais buscados</p>
+              <h2 className="text-2xl font-black text-white tracking-tighter uppercase">Diretório de Consultas Rápidas</h2>
+              <p className="text-slate-500 text-sm mt-1">Dados regionais para os modelos mais transacionados no Brasil</p>
             </div>
-            <a href="/modelos" className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-blue-400 text-xs font-black uppercase tracking-widest flex items-center gap-2 hover:bg-white/10 transition-all">
-              Ver Diretório Completo <ChevronRight className="w-4 h-4" />
+            <a href={`${APP_URL}/modelos`} className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-blue-400 text-xs font-black uppercase tracking-widest flex items-center gap-2 hover:bg-white/10 transition-all">
+              Ver Todos os Modelos <ChevronRight className="w-4 h-4" />
             </a>
           </div>
           
@@ -186,7 +182,7 @@ const LandingPage: React.FC = () => {
             {FOOTER_LINKS.map((link) => (
               <a 
                 key={link.model}
-                href={`/modelo/${link.brand.toLowerCase()}/${link.model}`}
+                href={`${APP_URL}/modelo/${link.brand.toLowerCase()}/${link.model}`}
                 className="group p-6 bg-white/[0.02] rounded-2xl border border-white/5 hover:border-blue-500/40 hover:bg-blue-500/5 transition-all"
               >
                 <span className="text-[10px] block font-black text-slate-500 uppercase tracking-widest mb-1">{link.brand}</span>
@@ -205,20 +201,20 @@ const LandingPage: React.FC = () => {
           </div>
           <span className="text-lg font-black text-white tracking-tighter uppercase">AvalIA AI</span>
         </div>
-        <div className="flex justify-center gap-8 mb-8 text-[10px] font-black uppercase tracking-widest text-slate-600">
-          <a href="#" className="hover:text-slate-400">Privacidade</a>
-          <a href="#" className="hover:text-slate-400">Termos</a>
-          <a href="mailto:contato@avaliaai.com" className="hover:text-slate-400">Contato</a>
-        </div>
-        <p className="text-slate-700 text-[10px] font-black uppercase tracking-[0.3em]">
-          © 2024 AvalIA AI - Tecnologia em Inteligência Automotiva Regionalizada
+        <p className="text-slate-700 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+          © 2024 AvalIA AI Automóveis - Inteligência Automotiva de Precisão
         </p>
+        <div className="flex justify-center gap-6 text-[9px] font-black uppercase text-slate-500">
+          <a href="#" className="hover:text-white">Privacidade</a>
+          <a href="#" className="hover:text-white">Termos</a>
+          <a href="mailto:contato@avaliaaiautomoveis.com" className="hover:text-white">Suporte</a>
+        </div>
       </footer>
       
-      {/* Botão Flutuante Mobile CTA */}
+      {/* Botão Flutuante Mobile CTA - Sempre visível */}
       <div className="fixed bottom-6 left-6 right-6 md:hidden z-50">
-        <a href={APP_URL} className="w-full bg-blue-600 text-white font-black py-4 rounded-2xl shadow-2xl flex items-center justify-center gap-3 active:scale-95 transition-transform">
-           <Zap className="w-5 h-5 fill-current" /> AVALIAR MEU CARRO AGORA
+        <a href={APP_URL} className="w-full bg-blue-600 text-white font-black py-5 rounded-2xl shadow-2xl flex items-center justify-center gap-3 active:scale-95 transition-transform border border-white/10">
+           <Zap className="w-5 h-5 fill-current" /> AVALIAR AGORA GRÁTIS
         </a>
       </div>
     </div>
