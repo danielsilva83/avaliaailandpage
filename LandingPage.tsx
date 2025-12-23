@@ -73,22 +73,22 @@ const COUNTRIES: Record<Country, CountryConfig> = {
 
 const TRANSLATIONS = {
   pt: {
-    heroTag: 'Inteligência de Mercado 3.0',
+    heroTag: 'Inteligência de Mercado feita para você vender melhor',
     heroTitle: 'Não perca dinheiro na hora de vender.',
-    heroTitleGradient: 'venda',
-    heroDesc: 'As tabelas oficiais são cegas. Nossa IA analisa anúncios reais na sua região para garantir que você não venda por menos do que o carro vale.',
+    heroTitleGradient: 'E compre no melhor preço',
+    heroDesc: 'As tabelas oficiais são uma média. Nossa IA analisa anúncios reais na sua região para garantir que você não venda por menos do que o carro vale.',
     ctaMain: 'Avaliar Agora Grátis',
     calcTitle: 'O custo de não usar a IA',
     calcDesc: 'Simule quanto você pode estar deixando na mesa ao confiar apenas na {ref}.',
     calcLabel: 'Valor do Veículo',
     lossLabel: 'Perda Estimada (Média)',
     lossDesc: 'Valor que você perde ao vender sem analisar a demanda regional real.',
-    proCostLabel: 'Custo da Proteção PRO',
+    proCostLabel: 'Custo da Consultoria PRO',
     proCostDesc: 'Menos de 0,1% do valor do seu veículo.',
     toolsTitle: 'O Arsenal do Vendedor Profissional',
     toolsDesc: 'Com o plano PRO, você recebe as armas para fechar o negócio pelo valor máximo.',
     dirTitle: 'Busque seu Modelo',
-    dirDesc: 'Análise regional disponível para modelos populares em {country}.',
+    dirDesc: 'Análise regional disponível para todos os modelos no {country}.',
     footerClaim: 'Inteligência em Tempo Real',
     login: 'Entrar no App'
   },
