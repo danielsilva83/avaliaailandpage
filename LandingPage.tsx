@@ -1,19 +1,18 @@
 
 import React from 'react';
 import { 
-  Car, TrendingUp, TrendingDown, ShieldCheck, BrainCircuit, 
-  ArrowRight, Check, Search, Target, MapPin, 
-  LayoutGrid, FileText, Megaphone, Calculator, ChevronRight,
-  ShieldAlert, Zap, Star, Users, Sparkles, MessageSquare, 
-  ShieldQuestion, BarChart3, Globe2,
-  CheckCircle2
+  Car, TrendingUp, ShieldCheck, ArrowRight, Check, Target, 
+  ChevronRight, Zap, Users, Globe2, ShieldQuestion, 
+  BarChart3, Sparkles, MapPin, Search, Star, ExternalLink,
+  ShieldAlert, Calculator
 } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
-  // URL OFICIAL DO APP PARA REDIRECIONAMENTO
+  // URL OFICIAL DO APP PARA REDIRECIONAMENTO ABSOLUTO
   const APP_URL = "https://www.avaliaaiautomoveis.com";
 
-  const FOOTER_LINKS = [
+  // SEO Programático: Lista Expandida para Cobrir o Top 30 do Mercado
+  const DIRECTORY_MODELS = [
     { brand: 'Volkswagen', model: 'gol', name: 'Preço Gol' },
     { brand: 'Honda', model: 'civic', name: 'Preço Civic' },
     { brand: 'Toyota', model: 'corolla', name: 'Preço Corolla' },
@@ -23,18 +22,34 @@ const LandingPage: React.FC = () => {
     { brand: 'Hyundai', model: 'hb20', name: 'Preço HB20' },
     { brand: 'Ford', model: 'ka', name: 'Preço Ka' },
     { brand: 'Renault', model: 'kwid', name: 'Preço Kwid' },
-    { brand: 'Nissan', model: 'kicks', name: 'Preço Kicks' }
+    { brand: 'Nissan', model: 'kicks', name: 'Preço Kicks' },
+    { brand: 'Toyota', model: 'hilux', name: 'Preço Hilux' },
+    { brand: 'Mitsubishi', model: 'l200', name: 'Preço L200' },
+    { brand: 'BMW', model: '320i', name: 'Preço BMW 320i' },
+    { brand: 'Mercedes', model: 'c180', name: 'Preço C180' },
+    { brand: 'Audi', model: 'a3', name: 'Preço Audi A3' },
+    { brand: 'Fiat', model: 'strada', name: 'Preço Strada' },
+    { brand: 'Jeep', model: 'renegade', name: 'Preço Renegade' },
+    { brand: 'Volkswagen', model: 'polo', name: 'Preço Polo' },
+    { brand: 'Chevrolet', model: 'tracker', name: 'Preço Tracker' },
+    { brand: 'Honda', model: 'hr-v', name: 'Preço HR-V' }
   ];
 
-  const FAQS = [
-    { q: "O AvalIA AI substitui a Tabela FIPE?", a: "Não, ele a torna inteligente. A FIPE é uma média nacional estática. Nós entregamos o preço real de transação do seu estado HOJE, baseado em anúncios ativos." },
-    { q: "Como a IA sabe o preço regional?", a: "Nossa tecnologia utiliza o Google Search Grounding para escanear marketplaces locais em tempo real, detectando escassez ou excesso de oferta na sua UF." },
-    { q: "O relatório serve para negociação?", a: "Com certeza. O Dossiê PRO gera um documento visual que você pode mostrar ao comprador/vendedor para justificar seu preço com base em dados, não em palpites." }
+  const REGIONS = [
+    { uf: 'SP', name: 'São Paulo' },
+    { uf: 'RJ', name: 'Rio de Janeiro' },
+    { uf: 'MG', name: 'Minas Gerais' },
+    { uf: 'PR', name: 'Paraná' },
+    { uf: 'RS', name: 'Rio Grande do Sul' },
+    { uf: 'SC', name: 'Santa Catarina' },
+    { uf: 'GO', name: 'Goiás' },
+    { uf: 'BA', name: 'Bahia' },
+    { uf: 'DF', name: 'Distrito Federal' }
   ];
 
   return (
     <div className="min-h-screen bg-[#0a0f18] text-slate-200 selection:bg-blue-500/30 font-sans scroll-smooth">
-      {/* Header / Nav */}
+      {/* Dynamic Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0a0f18]/80 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -43,179 +58,150 @@ const LandingPage: React.FC = () => {
             </div>
             <span className="text-xl font-black text-white tracking-tighter uppercase">AvalIA AI</span>
           </div>
-          <div className="hidden md:flex items-center gap-8 text-xs font-black uppercase tracking-widest text-slate-400">
-            <a href="#como-funciona" className="hover:text-white transition-colors">Como Funciona</a>
-            <a href="#comparativo" className="hover:text-white transition-colors">Por que regional?</a>
-            <a href={`${APP_URL}/modelos`} className="hover:text-white transition-colors">Diretório</a>
+          <div className="hidden md:flex items-center gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+            <a href="#ferramenta" className="hover:text-white transition-colors">A Ferramenta</a>
+            <a href="#diretorio" className="hover:text-white transition-colors">Preços por Modelo</a>
+            <a href="#regioes" className="hover:text-white transition-colors">Análise Regional</a>
           </div>
-          <a href={APP_URL} className="bg-white text-slate-950 px-6 py-2.5 rounded-full text-sm font-black hover:bg-blue-50 transition-all active:scale-95 shadow-lg">Entrar no App</a>
+          <a href={APP_URL} className="bg-white text-slate-950 px-6 py-2.5 rounded-full text-xs font-black hover:bg-blue-50 transition-all active:scale-95 shadow-lg shadow-white/5 uppercase tracking-wider">Entrar no App</a>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
+      {/* Hero with Glassmorphism */}
+      <section className="relative pt-40 pb-20 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20">
           <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-600 rounded-full blur-[120px]"></div>
           <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-emerald-600 rounded-full blur-[120px]"></div>
         </div>
         
         <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black mb-8 uppercase tracking-widest animate-pulse">
-            <Globe2 className="w-3 h-3" /> Inteligência Regionalizada v2.5 Online
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black mb-8 uppercase tracking-widest">
+            <Sparkles className="w-3 h-3" /> Inteligência de Mercado Regionalizada
           </div>
           
-          <h1 className="text-5xl md:text-8xl font-black text-white leading-[1] mb-8 tracking-tighter">
-            Venda pelo <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 italic">Máximo</span>.<br/> Compre pelo Justo.
+          <h1 className="text-5xl md:text-8xl font-black text-white leading-[0.9] mb-8 tracking-tighter">
+            Venda rápido.<br/> Venda pelo <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 italic">Preço Certo</span>.
           </h1>
           
-          <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Pare de perder dinheiro baseando-se em médias nacionais. O <strong>AvalIA AI</strong> analisa o mercado real da sua região, anúncios ativos e demanda estadual em segundos.
+          <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Nossa IA vasculha marketplaces em tempo real para entregar o valor de transação exato na sua cidade. Esqueça médias nacionais genéricas.
           </p>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-            <a href={APP_URL} className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-black text-lg transition-all shadow-xl shadow-blue-900/40 active:scale-95 group">
-              Avaliar Veículo Agora <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <a href={APP_URL} className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-black text-lg transition-all shadow-2xl shadow-blue-900/40 active:scale-95 group">
+              Avaliar Agora Grátis <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-            <div className="flex items-center gap-3 px-6 py-3 bg-white/5 rounded-2xl border border-white/10">
-              <Users className="w-5 h-5 text-slate-500" />
-              <span className="text-xs font-bold text-slate-400 tracking-tight">+12.000 avaliações regionais este mês</span>
+            <div className="flex items-center gap-3 px-6 py-4 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+              <Users className="w-5 h-5 text-blue-400" />
+              <span className="text-xs font-bold text-slate-300">+120 mil consultas realizadas</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Seção Comparativo Visual - A "Matadora" */}
-      <section id="comparativo" className="py-24 bg-white/[0.02] border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-          <div className="space-y-6">
-            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none">
-              A FIPE mostra o passado.<br/>
-              <span className="text-blue-500">Nós mostramos o agora.</span>
-            </h2>
-            <p className="text-slate-400 text-lg">
-              Um utilitário no MT vale mais que em SP. Um Sedan blindado no RJ tem preço único. A Tabela FIPE ignora isso, nós não.
-            </p>
-            <div className="space-y-4 mt-8">
-              <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
-                <CheckCircle2 className="w-6 h-6 text-emerald-500" />
-                <span className="text-sm font-bold">Ajuste de Preço por UF em tempo real</span>
-              </div>
-              <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
-                <CheckCircle2 className="w-6 h-6 text-emerald-500" />
-                <span className="text-sm font-bold">Dossiê de Venda pronto para PDF</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full"></div>
-            <div className="relative bg-[#0d1525] border border-white/10 p-8 rounded-[3rem] shadow-2xl">
-               <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center">
-                    <Car className="w-6 h-6 text-blue-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-white">Toyota Corolla XEi 2.0</h4>
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Região: Minas Gerais (MG)</p>
-                  </div>
-               </div>
-               
-               <div className="space-y-6">
-                  <div className="flex justify-between items-end border-b border-white/5 pb-4">
-                    <div className="space-y-1">
-                      <span className="text-slate-500 text-[10px] font-black uppercase">Média Brasil (FIPE)</span>
-                      <p className="text-slate-400 font-bold line-through">R$ 112.500</p>
-                    </div>
-                    <span className="text-slate-600 text-[10px] font-bold italic">Genérico</span>
-                  </div>
-                  
-                  <div className="flex justify-between items-end">
-                    <div className="space-y-1">
-                      <span className="text-blue-400 text-[10px] font-black uppercase">Valor Real AvalIA AI (MG)</span>
-                      <p className="text-4xl font-black text-white tracking-tighter">R$ 119.800</p>
-                    </div>
-                    <div className="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-[10px] font-black animate-bounce">VALORIZADO +6.5%</div>
-                  </div>
-               </div>
-
-               <div className="mt-8 p-4 bg-blue-600/10 border border-blue-500/20 rounded-2xl flex items-center gap-4">
-                  <Zap className="w-5 h-5 text-blue-400 shrink-0" />
-                  <p className="text-xs text-blue-200">Em <strong>MG</strong>, este modelo tem <strong>baixa oferta</strong> hoje, elevando o preço final.</p>
-               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-black text-white uppercase tracking-tighter">Perguntas Frequentes</h2>
-          </div>
-          <div className="grid gap-4">
-            {FAQS.map((f, i) => (
-              <div key={i} className="p-6 bg-white/5 border border-white/10 rounded-2xl hover:border-white/20 transition-all">
-                <h4 className="font-bold text-white mb-2 flex items-center gap-3 uppercase text-sm tracking-tight">
-                  <ShieldQuestion className="w-5 h-5 text-blue-500" /> {f.q}
-                </h4>
-                <p className="text-sm text-slate-400 leading-relaxed">{f.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SEO Directory Footer - Links Absolutos para publicação */}
-      <section className="py-24 border-t border-white/5 bg-[#080c14]">
+      {/* Seção Principal de SEO: Diretório de Modelos */}
+      <section id="diretorio" className="py-24 bg-white/[0.01] border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-6">
-            <div className="text-center md:text-left">
-              <h2 className="text-2xl font-black text-white tracking-tighter uppercase">Diretório de Consultas Rápidas</h2>
-              <p className="text-slate-500 text-sm mt-1">Dados regionais para os modelos mais transacionados no Brasil</p>
-            </div>
-            <a href={`${APP_URL}/modelos`} className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-blue-400 text-xs font-black uppercase tracking-widest flex items-center gap-2 hover:bg-white/10 transition-all">
-              Ver Todos os Modelos <ChevronRight className="w-4 h-4" />
-            </a>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase mb-4">Diretório Nacional de Preços</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto text-sm">Acesse a análise detalhada de depreciação, liquidez e valor real de mercado para os modelos mais buscados do Brasil.</p>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {FOOTER_LINKS.map((link) => (
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
+            {DIRECTORY_MODELS.map((car) => (
               <a 
-                key={link.model}
-                href={`${APP_URL}/modelo/${link.brand.toLowerCase()}/${link.model}`}
-                className="group p-6 bg-white/[0.02] rounded-2xl border border-white/5 hover:border-blue-500/40 hover:bg-blue-500/5 transition-all"
+                key={car.model}
+                href={`${APP_URL}/modelo/${car.brand.toLowerCase()}/${car.model}`}
+                className="group p-5 bg-white/[0.03] border border-white/5 rounded-2xl hover:bg-blue-600 transition-all hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-900/20"
               >
-                <span className="text-[10px] block font-black text-slate-500 uppercase tracking-widest mb-1">{link.brand}</span>
-                <span className="text-sm font-bold text-slate-200 group-hover:text-white">{link.name}</span>
+                <div className="flex flex-col">
+                  <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1 group-hover:text-blue-200">{car.brand}</span>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-bold text-white group-hover:text-white">{car.name}</span>
+                    <ChevronRight className="w-4 h-4 text-slate-600 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                  </div>
+                </div>
               </a>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <a href={`${APP_URL}/diretorio`} className="inline-flex items-center gap-2 text-xs font-black text-blue-400 uppercase tracking-widest hover:text-blue-300 transition-colors">
+              Explorar Todos os 1.500 Modelos Disponíveis <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO Regional: Captura por Estado */}
+      <section id="regioes" className="py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-gradient-to-br from-blue-900/20 to-slate-900/40 p-12 rounded-[3rem] border border-white/10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-12 opacity-10">
+              <Globe2 className="w-40 h-40 text-blue-400" />
+            </div>
+            
+            <div className="relative z-10">
+              <h3 className="text-2xl font-black text-white uppercase tracking-tighter mb-8">Inteligência Regional Ativa</h3>
+              <p className="text-slate-400 mb-10 max-w-xl text-sm leading-relaxed">Nossa IA detecta automaticamente a demanda local. Em Santa Catarina, um veículo pode valer até 8% mais do que no Mato Grosso. Nós calculamos essa diferença para você.</p>
+              
+              <div className="flex flex-wrap gap-3">
+                {REGIONS.map((reg) => (
+                  <div key={reg.uf} className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[11px] font-bold text-slate-400">
+                    <MapPin className="w-3 h-3 text-emerald-500" /> Preço de Carros em {reg.name}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ de Autoridade */}
+      <section className="py-24 bg-[#080c14]">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-3xl font-black text-white uppercase tracking-tighter text-center mb-16">Por que confiar no AvalIA AI?</h2>
+          <div className="grid gap-6">
+            <div className="p-8 bg-white/[0.02] border border-white/10 rounded-[2rem] flex gap-6 items-start">
+              <div className="bg-blue-600/20 p-3 rounded-2xl"><Calculator className="w-6 h-6 text-blue-400" /></div>
+              <div>
+                <h4 className="font-bold text-white mb-2">FIPE é apenas o começo</h4>
+                <p className="text-xs text-slate-500 leading-relaxed">A Tabela FIPE é uma média matemática. O AvalIA AI é um motor de busca que entende a escassez de modelos específicos em cada região, entregando o preço de "transação real".</p>
+              </div>
+            </div>
+            <div className="p-8 bg-white/[0.02] border border-white/10 rounded-[2rem] flex gap-6 items-start">
+              <div className="bg-emerald-600/20 p-3 rounded-2xl"><ShieldAlert className="w-6 h-6 text-emerald-400" /></div>
+              <div>
+                <h4 className="font-bold text-white mb-2">Proteção contra Golpes</h4>
+                <p className="text-xs text-slate-500 leading-relaxed">Preços muito abaixo do indicado pela nossa IA geralmente escondem problemas como leilão ou sinistro. Use nossa análise para identificar ofertas suspeitas.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer Final */}
-      <footer className="py-20 border-t border-white/5 text-center">
+      <footer className="py-20 border-t border-white/5 bg-[#0a0f18] text-center">
         <div className="flex items-center justify-center gap-2 mb-8">
-          <div className="bg-slate-800 p-1.5 rounded-lg">
-            <Car className="w-5 h-5 text-white" />
+          <div className="bg-slate-800 p-2 rounded-xl">
+            <Car className="w-6 h-6 text-white" />
           </div>
-          <span className="text-lg font-black text-white tracking-tighter uppercase">AvalIA AI</span>
+          <span className="text-xl font-black text-white tracking-tighter uppercase">AvalIA AI</span>
         </div>
-        <p className="text-slate-700 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
-          © 2024 AvalIA AI Automóveis - Inteligência Automotiva de Precisão
+        <p className="text-slate-700 text-[10px] font-black uppercase tracking-[0.4em] mb-4">
+          © 2024 AvalIA AI Automóveis - Dados Regionais em Tempo Real
         </p>
-        <div className="flex justify-center gap-6 text-[9px] font-black uppercase text-slate-500">
-          <a href="#" className="hover:text-white">Privacidade</a>
-          <a href="#" className="hover:text-white">Termos</a>
-          <a href="mailto:contato@avaliaaiautomoveis.com" className="hover:text-white">Suporte</a>
+        <div className="flex justify-center gap-8 text-[10px] font-black uppercase text-slate-500 tracking-widest">
+          <a href="#" className="hover:text-white transition-colors">Privacidade</a>
+          <a href="#" className="hover:text-white transition-colors">Termos</a>
+          <a href="mailto:contato@avaliaaiautomoveis.com" className="hover:text-white transition-colors">Contato</a>
         </div>
       </footer>
       
-      {/* Botão Flutuante Mobile CTA - Sempre visível */}
+      {/* Botão Flutuante Mobile (Alta Conversão) */}
       <div className="fixed bottom-6 left-6 right-6 md:hidden z-50">
-        <a href={APP_URL} className="w-full bg-blue-600 text-white font-black py-5 rounded-2xl shadow-2xl flex items-center justify-center gap-3 active:scale-95 transition-transform border border-white/10">
-           <Zap className="w-5 h-5 fill-current" /> AVALIAR AGORA GRÁTIS
+        <a href={APP_URL} className="w-full bg-blue-600 text-white font-black py-4 rounded-2xl shadow-2xl flex items-center justify-center gap-3 active:scale-95 transition-transform border border-white/10 ring-4 ring-blue-600/20">
+           <Zap className="w-5 h-5 fill-current" /> AVALIAR CARRO AGORA
         </a>
       </div>
     </div>
