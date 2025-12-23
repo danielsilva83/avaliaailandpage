@@ -96,6 +96,8 @@ const TRANSLATIONS = {
       inspection: 'Vistoria por Visão de IA'
     },
     footerClaim: 'Inteligência em Tempo Real',
+    dirTitle: 'Modelos Mais Procurados',
+    dirDesc: 'Veja a demanda real dos carros mais vendidos em {country}',
     login: 'Entrar no App'
   },
   en: {
@@ -127,6 +129,8 @@ const TRANSLATIONS = {
       inspection: 'AI Vision Inspection'
     },
     footerClaim: 'Real-Time Intelligence',
+    dirTitle: 'Most Popular Models',
+    dirDesc: 'See real demand for best-selling cars in {country}',
     login: 'Login to App'
   },
   es: {
@@ -158,6 +162,8 @@ const TRANSLATIONS = {
       inspection: 'Inspección por Visión IA'
     },
     footerClaim: 'Inteligencia en Tiempo Real',
+    dirTitle: 'Modelos Más Buscados',
+    dirDesc: 'Mira la demanda real de autos más vendidos en {country}',
     login: 'Ingresar al App'
   }
 };
@@ -331,7 +337,33 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
       </section>
+ {/* Diretório de Modelos Regionais */}
+      <section id="diretorio" className="py-24 border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-black text-white tracking-tighter uppercase mb-4">{t.dirTitle}</h2>
+            <p className="text-slate-500 text-sm">{t.dirDesc.replace('{country}', config.name)}</p>
+          </div>
 
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+            {config.models.map((car) => (
+              <a 
+                key={car.model}
+                href={`${APP_URL}/modelo/${car.brand.toLowerCase()}/${car.model}`}
+                className="group p-5 bg-white/[0.03] border border-white/5 rounded-2xl hover:bg-blue-600 transition-all hover:scale-[1.02]"
+              >
+                <div className="flex flex-col">
+                  <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1 group-hover:text-blue-200">{car.brand}</span>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-bold text-white group-hover:text-white">{car.name}</span>
+                    <ChevronRight className="w-4 h-4 text-slate-600 group-hover:text-white transition-all" />
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* Checklist Funcionalidades PRO */}
       <section className="py-24 px-6 border-y border-white/5">
         <div className="max-w-5xl mx-auto">
