@@ -5,7 +5,8 @@ import {
   ArrowRight, Check, Search, Target, MapPin, 
   LayoutGrid, FileText, Megaphone, Calculator, ChevronRight,
   ShieldAlert, Zap, Star, Users, Sparkles, MessageSquare, 
-  ShieldQuestion, BarChart3, Globe2
+  ShieldQuestion, BarChart3, Globe2,
+  CheckCircle2
 } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
