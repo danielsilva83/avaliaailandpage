@@ -68,9 +68,9 @@ const COUNTRIES: Record<Country, CountryConfig> = {
 
 const TRANSLATIONS = {
   pt: {
-    heroTag: 'Inteligência de Mercado 3.0',
+    heroTag: 'AvalIA AI, a Inteligência de Mercado feita para você negociar melhor',
     heroTitle: 'Não perca dinheiro na hora de vender.',
-    heroTitleGradient: 'venda',
+    heroTitleGradient: ' E Compre no melhor preço',
     heroDesc: 'As tabelas oficiais são cegas. Nossa IA analisa anúncios reais na sua região para garantir que você não venda por menos do que o carro vale.',
     ctaMain: 'Avaliar Agora Grátis',
     calcTitle: 'O Investimento mais Lógico',
